@@ -302,7 +302,9 @@ P{
     display: flex;
     gap: 30px;
     width: 100%;
-    margin-left: 250px;
+    text-align: center;
+    justify-content:center;
+    width:100%;
     margin-bottom: 50px;
     flex-wrap: wrap;
 
