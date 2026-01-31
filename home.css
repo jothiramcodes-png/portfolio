@@ -60,27 +60,61 @@ html{
 }
 }
 /*uparrow*/
-#up-arrow{
-    font-size: 20px;
-    border: none;
-    background-color: white;
-    border-radius: 20px;
-    cursor: pointer;
+/* Back to Top Button */
+#arrow-button {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b597b, #9333ea);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
 }
-#up-arrow:hover{
-    box-shadow: 2px 2px 2px silver;
-    width: 30px;
-    height: 30px;
-    background: white;
+
+#arrow-button svg {
+  width: 22px;
+  height: 22px;
+  fill: white;
 }
-#arrow-button{
-    border: none;
-    border-radius:100%;
-    background-color:white;
-    margin-left: 50%;
-    display: inline-flex;
-    position: fixed;
+
+/* Hover effect (desktop) */
+#arrow-button:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
 }
+
+/* Show button */
+#arrow-button.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile optimization */
+@media (max-width: 480px) {
+  #arrow-button {
+    width: 42px;
+    height: 42px;
+    bottom: 18px;
+    right: 18px;
+  }
+
+  #arrow-button svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
 /*Navbar*/
 #second{
     padding: 10px;

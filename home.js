@@ -6,11 +6,23 @@ menubtn.addEventListener('click', () => {
 });
 
 //show button on scrolling
-function gohome(){
-    document.getElementById("home").scrollIntoView({
-        behavior:"smooth"
-    })
-}
+const backToTopBtn = document.getElementById("arrow-button");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTopBtn.classList.add("show");
+  } else {
+    backToTopBtn.classList.remove("show");
+  }
+});
+
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
 
 //show the certificate images
 
