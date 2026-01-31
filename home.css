@@ -417,6 +417,7 @@ img{
     align-content: center;
     margin-left: 70px;
     margin-bottom: 20px;
+    z-index: 1;
 }
 h3{
     padding: 5px 10px;
