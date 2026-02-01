@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Art Studio</title>
+  <!-- Back to Top Button -->
+<button id="arrow-button" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+    <path fill-rule="evenodd"
+      d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
+  </svg>
+</button>
+<!-------------------------------------->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    /* Back to Top Button */
+#arrow-button {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b597b, #9333ea);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+#arrow-button svg {
+  width: 22px;
+  height: 22px;
+  fill: white;
+}
+
+/* Hover effect (desktop) */
+#arrow-button:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* Show button */
+#arrow-button.show {
+  opacity: 1;
+  visibility: visible;
+}
+    img{
+      width: 100%;
+      display: block;
+    }
+
+    body {
+      background-color:#cccccc;
+      color: #493129;
+      line-height: 1.6;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:  #ffdec7;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      margin: 20px 0;
+      color: #493129;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 1px solid #fff;
+      color: #fff;
+      text-decoration: none;
+      margin: 10px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    section {
+      padding: 80px 10%;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      border-left: 4px solid #fff;
+      padding-left: 15px;
+    }
+
+    .about p {
+      max-width: 800px;
+      color: #dddddd;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: #181818;
+      padding: 30px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .portfolio div {
+        position: relative;
+      height: 250px;
+      background: #222;
+      margin: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+      border-radius: 8px;
+    }
+
+    .contact p {
+      margin-bottom: 10px;
+      color: #cccccc;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #000;
+      color: #777;
+      font-size: 0.9rem;
+    }
+    #joe_art{
+        height: 400px;
+        width: 450px;
+    }
+  </style>
+</head>
+<body>
+<script>
+  //show button on scrolling
+const backToTopBtn = document.getElementById("arrow-button");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTopBtn.classList.add("show");
+  } else {
+    backToTopBtn.classList.remove("show");
+  }
+});
+
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+</script>
+<header>
+  <div>
+    <img src="./art_joe.jpeg" id="joe_art">
+    <p>Fine Art • Portraits • Creative Visuals</p>
+    <a href="#portfolio" class="btn">View Portfolio</a>
+    <a href="./index.html" class="btn">BACK TO PORTFOLIO</a>
+  </div>
+</header>
+
+<section class="about">
+  <h2>About the Artist</h2>
+  <p>
+    I am a passionate visual artist specializing in portrait art and creative illustrations.
+    My work focuses on emotion, realism, and storytelling through fine details.
+    Every artwork is crafted with precision, patience, and artistic depth.
+  </p>
+</section>
+
+<section>
+  <h2>Services</h2>
+  <div class="services">
+    <div class="card">
+      <h3>Portrait Art</h3>
+      <p>Realistic and semi-realistic portraits using pencil, charcoal, and digital mediums.</p>
+    </div>
+    <div class="card">
+      <h3>Custom Artwork</h3>
+      <p>Concept-based and personalized artworks for gifts, branding, and creatives.</p>
+    </div>
+    <div class="card">
+      <h3>Art Commissions</h3>
+      <p>One-on-one discussions with high-quality final artwork delivery.</p>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <h2>Works</h2>
+  <div class="portfolio">
+    <div><img src="./my.jpeg"></div>
+    <div>Artwork 2</div>
+    <div>Artwork 3</div>
+    <div>Artwork 4</div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <p>Email: your@email.com</p>
+  <p>Instagram: @yourhandle</p>
+  <p>Remote commissions available worldwide</p>
+</section>
+
+<footer>
+  © 2026 Your Art Studio — All Rights Reserved
+</footer>
+
+</body>
+</html>
