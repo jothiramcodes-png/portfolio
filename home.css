@@ -250,6 +250,11 @@ h3{
     font-size: 0.95rem;
   }
 }
+@media (max-width: 480px) {
+  .skill-text {
+    letter-spacing: -0.5px;
+  }
+}
 
 img{
     height: auto;
