@@ -203,6 +203,7 @@ h3{
   display: inline-block;
   position: relative;
   color:transparent;
+  font-size:30px;
   -webkit-text-stroke: .7px #4f1a41;
   animation: display-text 16s linear infinite;
   animation-delay: calc(-4s*var(--i));
@@ -219,6 +220,7 @@ h3{
 
   .skill-text {
     -webkit-text-stroke: 0.5px #4f1a41;
+    font-size:25px;
   }
 
   .skill-text::before {
