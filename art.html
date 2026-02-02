@@ -13,169 +13,202 @@
 </button>
 <!-------------------------------------->
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
-    /* Back to Top Button */
-#arrow-button {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  width: 48px;
-  height: 48px;
-  border: none;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #8b597b, #9333ea);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 1000;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", system-ui, sans-serif;
+  }
 
-#arrow-button svg {
-  width: 22px;
-  height: 22px;
-  fill: white;
-}
+  body {
+    background:#ffdec7;
+    color: #2c2c2c;
+    line-height: 1.7;
+  }
 
-/* Hover effect (desktop) */
-#arrow-button:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
-}
+  img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+  }
 
-/* Show button */
-#arrow-button.show {
-  opacity: 1;
-  visibility: visible;
-}
-    img{
-      width: 100%;
-      display: block;
-    }
+  /* ---------- Back to Top ---------- */
+  #arrow-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8b597b, #9333ea);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
 
-    body {
-      background-color:#cccccc;
-      color: #493129;
-      line-height: 1.6;
-    }
+  #arrow-button.show {
+    opacity: 1;
+    visibility: visible;
+  }
 
-    header {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background:  #ffdec7;
-    }
+  #arrow-button:hover {
+    transform: translateY(-5px);
+  }
 
-    header h1 {
-      font-size: 3.5rem;
-      letter-spacing: 2px;
-    }
+  /* ---------- Header ---------- */
+  header {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(120deg, #ffdec7, #f7c6d4);
+    padding: 40px 20px;
+  }
 
-    header p {
-      margin: 20px 0;
-      color: #493129;
-      font-size: 1.1rem;
-    }
+  header img {
+    width: 420px;
+    margin: 0 auto 20px;
+  }
 
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      border: 1px solid #fff;
-      color: #fff;
-      text-decoration: none;
-      margin: 10px;
-      transition: 0.3s;
-    }
+  header p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+  }
 
-    .btn:hover {
-      background: #fff;
-      color: #000;
+  .btn {
+    display: inline-block;
+    padding: 12px 32px;
+    margin: 8px;
+    border-radius: 30px;
+    background: #2c2c2c;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    background: #000;
+    transform: translateY(-3px);
+  }
+
+  /* ---------- Sections ---------- */
+  section {
+    padding: 90px 10%;
+  }
+
+  h2 {
+    font-size: 2.3rem;
+    margin-bottom: 30px;
+    position: relative;
+  }
+
+  h2::after {
+    content: "";
+    width: 60px;
+    height: 4px;
+    background: #9333ea;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    border-radius: 2px;
+  }
+
+  /* ---------- About ---------- */
+  .about p {
+    max-width: 800px;
+    font-size: 1.05rem;
+    color: #444;
+  }
+
+  /* ---------- Services ---------- */
+  .services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+  }
+
+  .card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .card h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+  }
+
+  /* ---------- Portfolio ---------- */
+  .portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+  }
+
+  .portfolio div {
+    background: #eaeaea;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .portfolio div:hover {
+    transform: scale(1.03);
+  }
+
+  /* ---------- Contact ---------- */
+  .contact {
+    background: #ffffff;
+    border-radius: 20px;
+    max-width: 900px;
+    margin: auto;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .contact p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #555;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    text-align: center;
+    padding: 35px;
+    background: #111;
+    color: #aaa;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    header img {
+      width: 280px;
     }
 
     section {
-      padding: 80px 10%;
+      padding: 70px 7%;
     }
-
-    h2 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-      border-left: 4px solid #fff;
-      padding-left: 15px;
-    }
-
-    .about p {
-      max-width: 800px;
-      color: #dddddd;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
-
-    .card {
-      background: #181818;
-      padding: 30px;
-      border-radius: 8px;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-    }
-
-    .portfolio {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .portfolio div {
-        position: relative;
-      height: 250px;
-      background: #222;
-      margin: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #777;
-      border-radius: 8px;
-    }
-
-    .contact p {
-      margin-bottom: 10px;
-      color: #cccccc;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #000;
-      color: #777;
-      font-size: 0.9rem;
-    }
-    #joe_art{
-        height: 400px;
-        width: 450px;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 <script>

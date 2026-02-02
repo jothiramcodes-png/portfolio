@@ -61,7 +61,12 @@ html{
 }
 #menu.active{
     display: flex;
+    padding: 20px;
+     background-color: #f3e6dc;
     flex-direction:column;
+}
+#menu li{
+  margin: 5px;
 }
 }
 /*uparrow*/
@@ -172,6 +177,80 @@ h3{
     gap: 30px;
     margin-top: 20px;
 }
+.skill-text-top{
+  display: inline-block;
+  position: relative;
+}
+.skill-text::before{
+  content: attr(data-text);
+  position: absolute;
+  width: 0;
+  border-right: 2px solid #59347b;
+  color: #59347b;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: fill-text 4s linear infinite;
+}
+@keyframes fill-text{
+  10%,100%{
+    width: 0;
+  }
+  70%,90%{
+    width: 100%;
+  }
+}
+.skill-text{
+  display: inline-block;
+  position: relative;
+  color:transparent;
+  -webkit-text-stroke: .7px #4f1a41;
+  animation: display-text 16s linear infinite;
+  animation-delay: calc(-4s*var(--i));
+}
+@keyframes display-text{
+  25%,100%{
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .skill-text-top {
+    font-size: 1.3rem;
+  }
+
+  .skill-text {
+    -webkit-text-stroke: 0.5px #4f1a41;
+  }
+
+  .skill-text::before {
+    border-right: 1.5px solid #59347b;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-text-top {
+    font-size: 1.1rem;
+  }
+
+  .skill-text {
+    -webkit-text-stroke: 0.4px #4f1a41;
+  }
+
+  .skill-text::before {
+    border-right: 1px solid #59347b;
+  }
+}
+@media (max-width: 768px) {
+  .skill-text-top {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-text-top {
+    font-size: 0.95rem;
+  }
+}
+
 img{
     height: auto;
     box-shadow: 6px 6px 6px #888888;
