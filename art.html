@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your Art Studio</title>
+  <title>Joe Art Studio</title>
   <!-- Back to Top Button -->
 <button id="arrow-button" aria-label="Back to top">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -21,8 +21,8 @@
   }
 
   body {
-    background:#ffdec7;
-    color: #2c2c2c;
+    background:#FFCE99;
+    color: #562F00;
     line-height: 1.7;
   }
 
@@ -70,7 +70,8 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(120deg, #ffdec7, #f7c6d4);
+    background:#FFCE99;
+    border: 20px solid white;
     padding: 40px 20px;
   }
 
@@ -78,7 +79,12 @@
     width: 420px;
     margin: 0 auto 20px;
   }
-
+  header img:hover{
+    width: 450px;
+    margin: 0 auto 20px;
+    transition: 0.1;
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.8);
+  }
   header p {
     font-size: 1.1rem;
     margin-bottom: 25px;
@@ -99,11 +105,14 @@
   .btn:hover {
     background: #000;
     transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.8);
   }
 
   /* ---------- Sections ---------- */
   section {
     padding: 90px 10%;
+    border: 5px solid white;
+    margin: 5px;
   }
 
   h2 {
@@ -194,6 +203,7 @@
   footer {
     text-align: center;
     padding: 35px;
+    margin-top: 10px;
     background: #111;
     color: #aaa;
     font-size: 0.9rem;
@@ -234,7 +244,7 @@ backToTopBtn.addEventListener("click", () => {
   <div>
     <img src="./art_joe.jpeg" id="joe_art">
     <p>Fine Art • Portraits • Creative Visuals</p>
-    <a href="#portfolio" class="btn">View Portfolio</a>
+    <a href="#portfolio" class="btn">View Arts</a>
     <a href="./index.html" class="btn">BACK TO PORTFOLIO</a>
   </div>
 </header>
@@ -277,14 +287,15 @@ backToTopBtn.addEventListener("click", () => {
 </section>
 
 <section id="contact" class="contact">
-  <h2>Contact</h2>
-  <p>Email: your@email.com</p>
-  <p>Instagram: @yourhandle</p>
+  <h2>CONTACT</h2>
+  <p>Email: jothiram2591@email.com</p>
+  <p>Instagram: j_o_t_h_i_r_a_m</p>
+  <p>Phone: 6374052186</p>
   <p>Remote commissions available worldwide</p>
 </section>
 
 <footer>
-  © 2026 Your Art Studio — All Rights Reserved
+  © 2026 Joe Art Studio — All Rights Reserved
 </footer>
 
 </body>
