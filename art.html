@@ -21,8 +21,8 @@
   }
 
   body {
-    background:#FFCE99;
-    color: #562F00;
+    background:#444;
+    color:white;
     line-height: 1.7;
   }
 
@@ -70,20 +70,25 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    background:#FFCE99;
+    border-image-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url(./backgroud1.jpg);
     border: 20px solid white;
     padding: 40px 20px;
   }
 
   header img {
     width: 420px;
+
     margin: 0 auto 20px;
   }
   header img:hover{
-    width: 450px;
+    width: 400px;
+    scroll-behavior: smooth;
     margin: 0 auto 20px;
     transition: 0.1;
-    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.8);
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.1);
   }
   header p {
     font-size: 1.1rem;
@@ -149,6 +154,7 @@
   .card {
     background: #ffffff;
     padding: 30px;
+    color: black;
     border-radius: 14px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
@@ -221,25 +227,6 @@
 </style>
 </head>
 <body>
-<script>
-  //show button on scrolling
-const backToTopBtn = document.getElementById("arrow-button");
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTopBtn.classList.add("show");
-  } else {
-    backToTopBtn.classList.remove("show");
-  }
-});
-
-backToTopBtn.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-});
-</script>
 <header>
   <div>
     <img src="./art_joe.jpeg" id="joe_art">
@@ -279,10 +266,16 @@ backToTopBtn.addEventListener("click", () => {
 <section id="portfolio">
   <h2>Works</h2>
   <div class="portfolio">
-    <div><img src="./my.jpeg"></div>
-    <div>Artwork 2</div>
-    <div>Artwork 3</div>
-    <div>Artwork 4</div>
+    <div><img src="./works/1.jpg"><p style="color:black;text-align: center;">ajay</p></div>
+    <div><img src="./works/2.jpg"><p style="color:black;text-align: center;">ajay</p></div>
+    <div><img src="./works/3.jpg"><p style="color:black;text-align: center;">ajay</p></div>
+    <div><img src="./works/4.jpg"><p style="color:black;text-align: center;">ajay</p></div>
+    <div><img src="./works/5.jpg"><p style="color:black;text-align: center;">ajay</p></div>
+    <div><img src="./works/6.jpg"><p style="color:black;text-align: center;">ajay</p></div>
+    <div><img src="./works/7.jpg"><p style="color:black;text-align: center;">ajay</p></div>
+    <div><img src="./works/8.jpg"><p style="color:black;text-align: center;">ajay</p></div>
+    <div><img src="./works/9.jpg"><p style="color:black;text-align: center;">ajay</p></div>
+    <div><img src="./works/10.jpg"><p style="color:black;text-align: center;">ajay</p></div>
   </div>
 </section>
 
@@ -293,7 +286,37 @@ backToTopBtn.addEventListener("click", () => {
   <p>Phone: 6374052186</p>
   <p>Remote commissions available worldwide</p>
 </section>
+<script>
+  //show button on scrolling
+const backToTopBtn = document.getElementById("arrow-button");
 
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTopBtn.classList.add("show");
+  } else {
+    backToTopBtn.classList.remove("show");
+  }
+});
+
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+//change image style
+const img1 = document.getElementById('joe_art');
+
+img1.addEventListener('mouseenter', () => {
+  img1.src = 'joe2.jpeg'; 
+});
+
+img1.addEventListener('mouseleave', () => {
+  // Fix: use 'img1' instead of 'img'
+  img1.src = 'art_joe.jpeg'; 
+});
+</script>
 <footer>
   © 2026 Joe Art Studio — All Rights Reserved
 </footer>
