@@ -551,7 +551,7 @@ img {
 #hero-img-container {
   position: relative;
   flex: none;
-  max-width: 260px;
+  max-width: 300px;
   width: 100%;
   height: auto;
   display: flex;
