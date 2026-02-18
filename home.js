@@ -29,14 +29,17 @@ const buttons = document.querySelectorAll(".fullscreen-btn");
 
 buttons.forEach((btn) => {
   btn.addEventListener("click", () => {
-    const img = btn.previousElementSibling;
+    // Find the image within the same card
+    const img = btn.closest(".cert-card").querySelector(".certificate-img");
 
-    if (img.requestFullscreen) {
-      img.requestFullscreen();
-    } else if (img.webkitRequestFullscreen) {
-      img.webkitRequestFullscreen(); // Safari
-    } else if (img.msRequestFullscreen) {
-      img.msRequestFullscreen(); // IE11
+    if (img) {
+      if (img.requestFullscreen) {
+        img.requestFullscreen();
+      } else if (img.webkitRequestFullscreen) {
+        img.webkitRequestFullscreen(); // Safari
+      } else if (img.msRequestFullscreen) {
+        img.msRequestFullscreen(); // IE11
+      }
     }
   });
 });
