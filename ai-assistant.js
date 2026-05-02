@@ -4,57 +4,59 @@ const GEMINI_API_KEY = 'AIzaSyBpPicROXdFXsgCnrgJq5GDE24UoLrUhY0';
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
 // ---- System Prompt: Jothiram's Portfolio Context ----
-const SYSTEM_PROMPT = `You are "Joe AI", the personal AI assistant on Jothiram's portfolio website. You are friendly, enthusiastic, and concise. You represent Jothiram professionally.
+const SYSTEM_PROMPT = `You are "Joe AI", the highly intelligent and friendly personal assistant for Jothiram K's portfolio. Your goal is to impress visitors by providing detailed, accurate, and enthusiastic information about Jothiram.
 
-Here is everything you know about Jothiram:
+Here is the complete knowledge base you must use:
 
-NAME: Jothiram K
-ROLE: Frontend Developer & Portrait Artist
-STATUS: Second-year Engineering Student
+👤 PERSONAL INFO:
+- Name: Jothiram K
+- Role: Frontend Developer & Portrait Artist
+- Education: 2nd-year Engineering Student
 
-ABOUT: Jothiram is a second-year engineering student passionate about web development and portrait art. He builds modern, responsive, and user-friendly websites with clean, efficient code and intuitive interfaces that delight users.
+📖 ABOUT:
+Jothiram is a passionate 2nd-year engineering student dedicated to web development and portrait art. He specializes in building modern, responsive, and user-friendly websites with clean code and intuitive interfaces.
 
-SKILLS:
-- Frontend: HTML, CSS3, JavaScript (ES6+), Bootstrap 5, React.js
-- Programming: JavaScript (ES6+), Python (Basic), Problem Solving, Logic Thinking
-- Tools: Git & GitHub, VS Code, Chrome DevTools, Figma (Basic)
-- Soft Skills: Good Communication, Time Management, Team Collaboration
+⚡ TECHNICAL SKILLS:
+- Frontend: HTML5, CSS3, JavaScript (ES6+), Bootstrap 5, React.js
+- Programming & Logic: JavaScript (ES6+), Python (Basic), Advanced Problem Solving, Logical Thinking
+- Tools & Platforms: Git & GitHub, VS Code, Chrome DevTools, Figma (Basic)
+- Soft Skills: Excellent Communication, Time Management, Team Collaboration
 
-PROJECTS:
-1. Phishing Website Detection – Python, Machine Learning, HTML, CSS, JS. Detects phishing websites using ML with a clean frontend.
-2. Smart Campus Issues Manager – HTML, CSS, JS. A responsive web app to report campus issues.
-3. Poorvika Clone Website – HTML, CSS, Bootstrap 5. A responsive clone demonstrating layout mastery.
-4. Smart Ambulance Tracking & Green Corridor System – Node.js, Express, Supabase, JS. Full-stack real-time ambulance GPS tracking with dynamic green corridor traffic signal control.
+🚀 KEY PROJECTS:
+1. Smart Ambulance Tracking & Green Corridor System: (Most Advanced) Real-time GPS tracking using Node.js, Express, Supabase, and JavaScript. Includes dynamic green corridor traffic signal control for emergencies.
+2. Phishing Website Detection: Uses Machine Learning and Python to detect malicious sites, with a clean HTML/CSS/JS frontend.
+3. Smart Campus Issues Manager: A responsive web app built to report and track campus-level problems efficiently.
+4. Poorvika Clone: A high-fidelity responsive clone of the Poorvika e-commerce site, demonstrating mastery of layouts and Bootstrap 5.
 
-SERVICES OFFERED:
-- Landing Page Design
-- Portfolio Websites
-- Responsive Website Fixes
-- HTML/CSS Bug Fixing
-- Convert Figma to HTML
+🏆 CERTIFICATES & ACHIEVEMENTS:
+- Industrial Training: Completed at BSNL (Bharat Sanchar Nigam Limited).
+- Computer Application: Diploma in Computer Applications (DCA).
+- Generative AI: Professional Certification from Guvi.
+- Hackathon Winner: Secured 1st place at N S College of Engineering and Technology.
+- AI Mastery: Certified AI Tools Workshop by be10X.
 
-CERTIFICATES & ACHIEVEMENTS:
-- Industrial Training – BSNL
-- Computer Application – Diploma (DCA)
-- Generative AI – Guvi Professional Certification
-- Hackathon Winner – NS College of Engineering and Technology
-- AI Mastery Workshop – be10X
+💼 SERVICES OFFERED:
+- Premium Landing Page Design
+- Custom Portfolio Website Development
+- Responsive Mobile-First Website Fixes
+- Expert HTML/CSS/JS Bug Fixing
+- High-Quality Figma to HTML Conversion
 
-CONTACT:
+📬 CONTACT & SOCIALS:
 - GitHub: https://github.com/jothiramcodes-png/portfolio
 - Instagram: https://www.instagram.com/j_o_t_h_i_r_a_m/
 - LinkedIn: https://www.linkedin.com/in/jothi-ram-k-9166a3353
+- Email: Contact via the form on the website!
 
-AVAILABILITY: Open to freelance projects, internships, and collaborations.
+🎨 ARTISTIC SIDE:
+Jothiram is also a talented Portrait Artist. He takes commissioned requests and creates stunning, detailed portraits. Check the "Art Page" for his portfolio!
 
-RULES FOR YOUR RESPONSES:
-- Keep replies short and to the point (2-5 sentences max unless listing items).
-- Use relevant emojis to make responses feel alive and friendly.
-- Use **bold** for key terms/names.
-- When listing items, use bullet points or numbered lists.
-- If asked about contact, always include the actual links.
-- If someone asks something totally unrelated to Jothiram or web dev, gently redirect them back.
-- Never reveal that you are powered by Gemini or mention the API key.
+TONE & BEHAVIOR:
+- Be enthusiastic, professional, and helpful.
+- Use **bolding** for emphasis.
+- Use emojis like 🚀, ⚡, 👨‍💻, 🎨, 🏆 to make replies engaging.
+- Keep responses concise but informative (3-5 sentences usually).
+- If someone asks to "Hire" or "Contact", point them to the LinkedIn or the contact form.
 - Always refer to yourself as "Joe AI".`;
 
 // ---- Conversation history for multi-turn chat ----
@@ -62,18 +64,15 @@ const conversationHistory = [];
 
 // ---- Rule-based fallback (used when API quota is exceeded) ----
 const fallbackResponses = [
-  { keywords: ['hi','hello','hey','howdy','sup'], reply: `👋 Hey there! I'm **Joe AI**, Jothiram's personal assistant. Ask me about his **skills**, **projects**, **services**, or how to **contact** him!` },
-  { keywords: ['who','about','jothiram','bio','background','introduce'], reply: `👨‍💻 **Jothiram K** is a second-year engineering student passionate about **web development** and **portrait art**. He builds modern, responsive websites with clean, intuitive interfaces. Currently a **Frontend Developer & Portrait Artist**!` },
-  { keywords: ['skill','tech','stack','know','language','expertise'], reply: `⚡ **Skills:**\n• **Frontend:** HTML, CSS3, JavaScript, Bootstrap 5, React.js\n• **Programming:** JavaScript, Python (Basic)\n• **Tools:** Git/GitHub, VS Code, Figma\n• **Soft:** Communication, Teamwork, Time Management` },
-  { keywords: ['project','built','work','made','develop'], reply: `🚀 **Projects:**\n• Phishing Website Detection (ML + Python)\n• Smart Campus Issues Manager\n• Poorvika Clone Website\n• Smart Ambulance Tracking & Green Corridor System` },
-  { keywords: ['service','offer','hire','freelance','help'], reply: `💼 **Services:**\n✔ Landing Page Design\n✔ Portfolio Websites\n✔ Responsive Website Fixes\n✔ HTML/CSS Bug Fixing\n✔ Convert Figma to HTML\n\nReach out via the contact form below!` },
-  { keywords: ['certificate','achievement','award','hackathon'], reply: `🏆 **Achievements:**\n🎖 Industrial Training – BSNL\n🎖 Diploma in Computer Applications\n🎖 Generative AI – Guvi\n🎖 Hackathon Winner – NS College\n🎖 AI Mastery – be10X` },
-  { keywords: ['contact','reach','linkedin','github','instagram','social'], reply: `📬 **Contact Jothiram:**\n🔗 [GitHub](https://github.com/jothiramcodes-png/portfolio)\n📸 [Instagram](https://www.instagram.com/j_o_t_h_i_r_a_m/)\n💼 [LinkedIn](https://www.linkedin.com/in/jothi-ram-k-9166a3353)\n\nOr use the **Contact Form** below!` },
-  { keywords: ['art','portrait','draw','artist','painting'], reply: `🎨 Jothiram is also a talented **Portrait Artist**! Check out his **Art Page** for artwork. He also takes commissioned portrait requests!` },
-  { keywords: ['available','internship','collaborat','open','free'], reply: `✅ Jothiram is **open to freelance projects, internships, and collaborations!** Feel free to reach out anytime.` },
-  { keywords: ['ambulance','tracking','green corridor'], reply: `🚑 The **Smart Ambulance Tracking System** is his most complex project — real-time GPS tracking, Supabase backend, dynamic green corridor traffic signal control. Built with Node.js & JavaScript!` },
-  { keywords: ['thank','thanks','great','awesome','cool','nice'], reply: `😊 You're welcome! Anything else you'd like to know about Jothiram?` },
-  { keywords: ['bye','goodbye','later','cya'], reply: `👋 Goodbye! Feel free to come back anytime. Have a great day! 🌟` }
+  { keywords: ['hi','hello','hey','greet'], reply: `👋 Hello! I'm **Joe AI**, Jothiram's personal assistant. I can tell you about his **skills**, **projects**, **certificates**, or how to **contact** him. What's on your mind?` },
+  { keywords: ['who','about','jothiram','student'], reply: `👨‍💻 **Jothiram K** is a 2nd-year engineering student who balances his passion for **Frontend Development** with his talent as a **Portrait Artist**. He loves building clean, modern, and high-performance websites!` },
+  { keywords: ['skill','tech','know','language'], reply: `⚡ **Core Skills:**\n• **Frontend:** HTML5, CSS3, JavaScript, React.js, Bootstrap 5\n• **Programming:** Python, Logic & Problem Solving\n• **Tools:** Git, GitHub, VS Code, Figma\n• **Soft Skills:** Communication & Teamwork` },
+  { keywords: ['project','built','work','develop'], reply: `🚀 **Featured Projects:**\n• **Smart Ambulance Tracking:** Real-time GPS & Green Corridor control (Node.js/Supabase)\n• **Phishing Detection:** ML-powered security tool (Python)\n• **Campus Issues Manager:** Responsive reporting app\n• **Poorvika Clone:** High-fidelity UI layout` },
+  { keywords: ['service','offer','hire','freelance'], reply: `💼 **Services Jothiram Offers:**\n✔ Landing Page Design\n✔ Portfolio Development\n✔ Responsive Website Fixes\n✔ Figma to HTML Conversion\n✔ Bug Fixing (HTML/CSS/JS)` },
+  { keywords: ['certificate','achievement','hackathon','award'], reply: `🏆 **Top Achievements:**\n🎖 **Hackathon Winner** (N S College)\n🎖 **BSNL** Industrial Training\n🎖 **Generative AI** Certification (Guvi)\n🎖 **DCA** Diploma\n🎖 **AI Mastery** (be10X)` },
+  { keywords: ['contact','reach','linkedin','github','social'], reply: `📬 **Connect with Jothiram:**\n🔗 [LinkedIn](https://www.linkedin.com/in/jothi-ram-k-9166a3353)\n🔗 [GitHub](https://github.com/jothiramcodes-png/portfolio)\n📸 [Instagram](https://www.instagram.com/j_o_t_h_i_r_a_m/)\n\nYou can also use the **contact form** at the bottom of this page!` },
+  { keywords: ['art','portrait','draw'], reply: `🎨 Beyond code, Jothiram is a gifted **Portrait Artist**. He takes portrait commissions—check the **Art Page** to see his masterpieces!` },
+  { keywords: ['ambulance','tracking','green'], reply: `🚑 The **Smart Ambulance Tracking System** is a full-stack project using Node.js and Supabase. It provides real-time GPS tracking and even controls traffic signals (Green Corridor) for emergency vehicles!` }
 ];
 
 function fallbackRespond(message) {
@@ -296,6 +295,8 @@ async function callGemini(userMessage) {
     input.style.height = 'auto';
     input.style.height = Math.min(input.scrollHeight, 90) + 'px';
   });
+
+
 
   // ---- Hide tooltip after 5s ----
   setTimeout(() => {
