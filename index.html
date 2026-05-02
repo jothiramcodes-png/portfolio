@@ -413,10 +413,8 @@
 
   <!-- Trigger Button -->
   <button id="ai-chat-trigger" aria-label="Chat with Joe AI">
-    <!-- Bot icon -->
-    <svg class="bot-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18 2.5 2.5 0 0 0 10 15.5 2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5z"/>
-    </svg>
+    <!-- Avatar face icon -->
+    <img class="bot-icon" src="joe-avatar.png" alt="Joe AI" style="width:66px;height:66px;border-radius:50%;object-fit:cover;object-position:top center;">
     <!-- Close icon -->
     <svg class="close-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
@@ -427,10 +425,8 @@
   <div id="ai-chat-window" role="dialog" aria-label="AI Assistant Chat">
     <!-- Header -->
     <div id="ai-chat-header">
-      <div class="ai-avatar">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18 2.5 2.5 0 0 0 10 15.5 2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5z"/>
-        </svg>
+      <div class="ai-avatar" style="background:none;overflow:hidden;">
+        <img src="joe-avatar.png" alt="Joe" style="width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:top;">
       </div>
       <div class="ai-header-info">
         <h4>Joe AI</h4>
