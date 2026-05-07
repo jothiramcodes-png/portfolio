@@ -10,11 +10,11 @@ Here is the complete knowledge base you must use:
 
 👤 PERSONAL INFO:
 - Name: Jothiram K
-- Role: Frontend Developer & Portrait Artist
+- Role: Frontend Developer
 - Education: 2nd-year Engineering Student
 
 📖 ABOUT:
-Jothiram is a passionate 2nd-year engineering student dedicated to web development and portrait art. He specializes in building modern, responsive, and user-friendly websites with clean code and intuitive interfaces.
+Jothiram is a passionate 2nd-year engineering student dedicated to web development. He specializes in building modern, responsive, and user-friendly websites with clean code and intuitive interfaces.
 
 ⚡ TECHNICAL SKILLS:
 - Frontend: HTML5, CSS3, JavaScript (ES6+), Bootstrap 5, React.js
@@ -48,13 +48,12 @@ Jothiram is a passionate 2nd-year engineering student dedicated to web developme
 - LinkedIn: https://www.linkedin.com/in/jothi-ram-k-9166a3353
 - Email: Contact via the form on the website!
 
-🎨 ARTISTIC SIDE:
-Jothiram is also a talented Portrait Artist. He takes commissioned requests and creates stunning, detailed portraits. Check the "Art Page" for his portfolio!
+
 
 TONE & BEHAVIOR:
 - Be enthusiastic, professional, and helpful.
 - Use **bolding** for emphasis.
-- Use emojis like 🚀, ⚡, 👨‍💻, 🎨, 🏆 to make replies engaging.
+- Use emojis like 🚀, ⚡, 👨‍💻, 🏆 to make replies engaging.
 - Keep responses concise but informative (3-5 sentences usually).
 - If someone asks to "Hire" or "Contact", point them to the LinkedIn or the contact form.
 - Always refer to yourself as "Joe AI".`;
@@ -65,13 +64,13 @@ const conversationHistory = [];
 // ---- Rule-based fallback (used when API quota is exceeded) ----
 const fallbackResponses = [
   { keywords: ['hi','hello','hey','greet'], reply: `👋 Hello! I'm **Joe AI**, Jothiram's personal assistant. I can tell you about his **skills**, **projects**, **certificates**, or how to **contact** him. What's on your mind?` },
-  { keywords: ['who','about','jothiram','student'], reply: `👨‍💻 **Jothiram K** is a 2nd-year engineering student who balances his passion for **Frontend Development** with his talent as a **Portrait Artist**. He loves building clean, modern, and high-performance websites!` },
+  { keywords: ['who','about','jothiram','student'], reply: `👨‍💻 **Jothiram K** is a 2nd-year engineering student who is passionate about **Frontend Development**. He loves building clean, modern, and high-performance websites!` },
   { keywords: ['skill','tech','know','language'], reply: `⚡ **Core Skills:**\n• **Frontend:** HTML5, CSS3, JavaScript, React.js, Bootstrap 5\n• **Programming:** Python, Logic & Problem Solving\n• **Tools:** Git, GitHub, VS Code, Figma\n• **Soft Skills:** Communication & Teamwork` },
   { keywords: ['project','built','work','develop'], reply: `🚀 **Featured Projects:**\n• **Smart Ambulance Tracking:** Real-time GPS & Green Corridor control (Node.js/Supabase)\n• **Phishing Detection:** ML-powered security tool (Python)\n• **Campus Issues Manager:** Responsive reporting app\n• **Poorvika Clone:** High-fidelity UI layout` },
   { keywords: ['service','offer','hire','freelance'], reply: `💼 **Services Jothiram Offers:**\n✔ Landing Page Design\n✔ Portfolio Development\n✔ Responsive Website Fixes\n✔ Figma to HTML Conversion\n✔ Bug Fixing (HTML/CSS/JS)` },
   { keywords: ['certificate','achievement','hackathon','award'], reply: `🏆 **Top Achievements:**\n🎖 **Hackathon Winner** (N S College)\n🎖 **BSNL** Industrial Training\n🎖 **Generative AI** Certification (Guvi)\n🎖 **DCA** Diploma\n🎖 **AI Mastery** (be10X)` },
   { keywords: ['contact','reach','linkedin','github','social'], reply: `📬 **Connect with Jothiram:**\n🔗 [LinkedIn](https://www.linkedin.com/in/jothi-ram-k-9166a3353)\n🔗 [GitHub](https://github.com/jothiramcodes-png/portfolio)\n📸 [Instagram](https://www.instagram.com/j_o_t_h_i_r_a_m/)\n\nYou can also use the **contact form** at the bottom of this page!` },
-  { keywords: ['art','portrait','draw'], reply: `🎨 Beyond code, Jothiram is a gifted **Portrait Artist**. He takes portrait commissions—check the **Art Page** to see his masterpieces!` },
+
   { keywords: ['ambulance','tracking','green'], reply: `🚑 The **Smart Ambulance Tracking System** is a full-stack project using Node.js and Supabase. It provides real-time GPS tracking and even controls traffic signals (Green Corridor) for emergency vehicles!` }
 ];
 

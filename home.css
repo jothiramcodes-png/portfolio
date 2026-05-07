@@ -215,8 +215,7 @@ html {
     margin: 5px 0;
   }
 
-  #contact-button,
-  #art-contact-button {
+  #contact-button {
     margin-left: 0;
     width: 100%;
   }
@@ -386,24 +385,7 @@ h3 {
   box-shadow: 0 10px 20px rgba(147, 51, 234, 0.3);
 }
 
-#art-contact-button {
-  position: relative;
-  padding: 12px 24px;
-  background: #10b981;
-  color: white;
-  margin-left: 10px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: var(--transition-smooth);
-}
 
-#art-contact-button:hover {
-  background-color: var(--secondary-color);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
-}
 
 /*---content section----*/
 #content-div {
@@ -419,78 +401,85 @@ h3 {
 }
 
 .skill-text-top {
-  display: inline-block;
-  position: relative;
-}
-
-.skill-text::before {
-  content: attr(data-text);
-  position: absolute;
-  width: 0;
-  border-right: 2px solid #8b597b;
-  color: #8b597b;
-  white-space: nowrap;
+  display: block;
+  height: 48px;
   overflow: hidden;
-  animation: fill-text 4s linear infinite;
-}
-
-@keyframes fill-text {
-
-  10%,
-  100% {
-    width: 0;
-  }
-
-  70%,
-  90% {
-    width: 100%;
-  }
+  position: relative;
+  margin: 10px 0;
 }
 
 .skill-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  font-size: 32px;
+  font-weight: 800;
+  white-space: nowrap;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: translateY(30px);
+  animation: slide-reveal 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation-delay: calc(4s * (var(--i) - 1));
   display: inline-block;
-  position: relative;
-  color: transparent;
-  font-size: 30px;
-  -webkit-text-stroke: .7px var(--primary-color);
-  animation: display-text 16s linear infinite;
-  animation-delay: calc(-4s*var(--i));
 }
 
-@keyframes display-text {
-
-  25%,
-  100% {
-    display: none;
+@keyframes slide-reveal {
+  0% { 
+    opacity: 0; 
+    transform: translateY(30px); 
   }
+  5%, 30% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+  35% { 
+    opacity: 0; 
+    transform: translateY(-30px); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: translateY(-30px);
+  }
+}
+
+/* Glowing cursor effect */
+.skill-text::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 10%;
+  width: 3px;
+  height: 80%;
+  background: var(--accent-color);
+  box-shadow: 0 0 12px var(--accent-color);
+  animation: cursor-blink 0.8s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 @media (max-width: 768px) {
   .skill-text-top {
-    font-size: 1.3rem;
+    height: 38px;
   }
 
   .skill-text {
-    -webkit-text-stroke: 0.5px #4f1a41;
-    font-size: 25px;
-  }
-
-  .skill-text::before {
-    border-right: 1.5px solid #59347b;
+    font-size: 24px;
   }
 }
 
 @media (max-width: 480px) {
   .skill-text-top {
-    font-size: 1.1rem;
+    height: 32px;
   }
 
   .skill-text {
-    -webkit-text-stroke: 0.4px #4f1a41;
-  }
-
-  .skill-text::before {
-    border-right: 1px solid #59347b;
+    font-size: 20px;
   }
 }
 
@@ -533,6 +522,52 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#text h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  background: none;
+  -webkit-text-fill-color: initial;
+  margin: 0;
+  animation: none;
+}
+
+#text h1 span {
+  display: block;
+  font-size: 4.5rem;
+  font-weight: 900;
+  letter-spacing: -2.5px;
+  line-height: 1.1;
+  margin-top: 10px;
+  background: linear-gradient(90deg, #a855f7, #c084fc, #22d3ee, #a855f7);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hero-name-glow 6s linear infinite;
+  filter: drop-shadow(0 0 25px rgba(168, 85, 247, 0.25));
+  transition: var(--transition-smooth);
+}
+
+#text h1 span:hover {
+  filter: drop-shadow(0 0 35px rgba(34, 211, 238, 0.4));
+  transform: scale(1.02);
+}
+
+@keyframes hero-name-glow {
+  to { background-position: 200% center; }
+}
+
+@media (max-width: 768px) {
+  #text h1 { font-size: 1.8rem; }
+  #text h1 span { font-size: 3.5rem; letter-spacing: -1.5px; }
+}
+
+@media (max-width: 480px) {
+  #text h1 { font-size: 1.5rem; }
+  #text h1 span { font-size: 2.8rem; letter-spacing: -1px; }
 }
 
 /*text dic inside the button*/
