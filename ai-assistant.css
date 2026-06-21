@@ -9,42 +9,78 @@
   position: fixed;
   bottom: 32px;
   right: 32px;
-  width: 70px;
-  height: 70px;
+  width: 74px;
+  height: 74px;
   border-radius: 50%;
-  border: 2px solid rgba(167, 139, 250, 0.5);
+  border: none;
   cursor: pointer;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(145deg, #1a0533, #2d1060);
+  background: linear-gradient(145deg, #12022a, #1e0550, #0d1a3a);
+  padding: 3px;
+  /* Aurora border via box-shadow layers */
   box-shadow:
-    0 0 0 0 rgba(124, 58, 237, 0.5),
-    0 8px 32px rgba(124, 58, 237, 0.5),
+    0 0 0 2px rgba(168,85,247,0.6),
+    0 0 0 4px rgba(34,211,238,0.25),
+    0 0 24px rgba(168,85,247,0.7),
+    0 0 48px rgba(34,211,238,0.35),
+    0 12px 40px rgba(0,0,0,0.5),
     inset 0 1px 0 rgba(255,255,255,0.1);
-  animation: pulse-ring 2.8s ease-in-out infinite;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  animation: ai-trigger-pulse 3s ease-in-out infinite;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
   overflow: hidden;
-  padding: 0;
+}
+
+/* Rotating rainbow conic ring */
+#ai-chat-trigger::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #a855f7, #22d3ee, #ec4899, #a855f7, #22d3ee, #a855f7
+  );
+  animation: ai-ring-rotate 3s linear infinite;
+  z-index: -1;
+  opacity: 0.75;
+}
+
+/* Inner dark fill so image shows cleanly */
+#ai-chat-trigger::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #12022a, #1a0845);
+  z-index: 0;
+}
+
+@keyframes ai-ring-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 #ai-chat-trigger:hover {
-  transform: scale(1.12) translateY(-2px);
+  transform: scale(1.14) translateY(-3px);
   box-shadow:
-    0 0 0 8px rgba(124, 58, 237, 0.12),
-    0 16px 40px rgba(124, 58, 237, 0.7),
-    inset 0 1px 0 rgba(255,255,255,0.15);
-  border-color: rgba(167, 139, 250, 0.9);
+    0 0 0 2px rgba(168,85,247,0.9),
+    0 0 0 6px rgba(34,211,238,0.35),
+    0 0 36px rgba(168,85,247,0.9),
+    0 0 72px rgba(34,211,238,0.5),
+    0 16px 48px rgba(0,0,0,0.6);
 }
 
 #ai-chat-trigger img.bot-icon {
-  width: 66px;
-  height: 66px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   object-fit: cover;
   object-position: top center;
   display: block;
+  position: relative;
+  z-index: 1;
 }
 
 #ai-chat-trigger.active img.bot-icon { display: none; }
@@ -54,13 +90,16 @@
   width: 26px;
   height: 26px;
   fill: white;
+  position: relative;
+  z-index: 1;
 }
 
-@keyframes pulse-ring {
-  0%   { box-shadow: 0 0 0 0 rgba(124,58,237,0.5), 0 8px 32px rgba(124,58,237,0.5), inset 0 1px 0 rgba(255,255,255,0.1); }
-  50%  { box-shadow: 0 0 0 14px rgba(124,58,237,0), 0 8px 32px rgba(124,58,237,0.5), inset 0 1px 0 rgba(255,255,255,0.1); }
-  100% { box-shadow: 0 0 0 0 rgba(124,58,237,0), 0 8px 32px rgba(124,58,237,0.5), inset 0 1px 0 rgba(255,255,255,0.1); }
+@keyframes ai-trigger-pulse {
+  0%   { box-shadow: 0 0 0 2px rgba(168,85,247,0.6), 0 0 0 4px rgba(34,211,238,0.25), 0 0 24px rgba(168,85,247,0.7), 0 0 48px rgba(34,211,238,0.35), 0 12px 40px rgba(0,0,0,0.5); }
+  50%  { box-shadow: 0 0 0 3px rgba(168,85,247,0.9), 0 0 0 8px rgba(34,211,238,0.15), 0 0 36px rgba(168,85,247,0.9), 0 0 70px rgba(34,211,238,0.4), 0 12px 40px rgba(0,0,0,0.5); }
+  100% { box-shadow: 0 0 0 2px rgba(168,85,247,0.6), 0 0 0 4px rgba(34,211,238,0.25), 0 0 24px rgba(168,85,247,0.7), 0 0 48px rgba(34,211,238,0.35), 0 12px 40px rgba(0,0,0,0.5); }
 }
+
 
 /* ---- Tooltip ---- */
 #ai-chat-tooltip {
@@ -470,4 +509,38 @@
     right: 94px;
     bottom: 28px;
   }
+  #ai-chat-label {
+    right: 10px;
+    bottom: 8px;
+  }
+}
+
+/* ---- Floating AI Label Badge ---- */
+#ai-chat-label {
+  position: fixed;
+  bottom: 14px;
+  right: 28px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: transparent;
+  background: linear-gradient(90deg, #a855f7, #22d3ee, #ec4899);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: ai-label-gradient 3s linear infinite;
+  z-index: 9999;
+  pointer-events: none;
+  text-align: center;
+  width: 74px;
+  filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.8));
+}
+
+@keyframes ai-label-gradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

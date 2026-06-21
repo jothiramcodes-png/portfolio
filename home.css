@@ -1068,3 +1068,172 @@ textarea {
 .contact-container button:hover {
   background-color: #59347b;
 }
+
+/* ===== Download Resume Button — PREMIUM EDITION ===== */
+
+/* Outer wrapper to hold the aurora ring */
+.resume-btn-wrapper {
+  display: inline-block;
+  width: fit-content;
+  align-self: flex-start;
+  position: relative;
+  margin-top: 28px;
+  border-radius: 56px;
+  padding: 2px;
+  background: linear-gradient(135deg, #a855f7, #22d3ee, #ec4899, #a855f7);
+  background-size: 300% 300%;
+  animation: resumeAurora 4s linear infinite;
+  box-shadow:
+    0 0 18px rgba(168, 85, 247, 0.55),
+    0 0 40px rgba(34, 211, 238, 0.25),
+    0 0 80px rgba(236, 72, 153, 0.12);
+}
+
+@keyframes resumeAurora {
+  0%   { background-position: 0% 50%;   box-shadow: 0 0 18px rgba(168,85,247,0.6), 0 0 40px rgba(34,211,238,0.25); }
+  33%  { background-position: 100% 50%; box-shadow: 0 0 22px rgba(34,211,238,0.7), 0 0 48px rgba(236,72,153,0.3); }
+  66%  { background-position: 100% 0%;  box-shadow: 0 0 20px rgba(236,72,153,0.6), 0 0 44px rgba(168,85,247,0.3); }
+  100% { background-position: 0% 50%;   box-shadow: 0 0 18px rgba(168,85,247,0.6), 0 0 40px rgba(34,211,238,0.25); }
+}
+
+/* The actual anchor tag */
+#download-resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #1a0533 0%, #0f172a 50%, #0c1a3a 100%);
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 54px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
+  white-space: nowrap;
+}
+
+/* Shimmer sweep */
+#download-resume-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -110%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 80%
+  );
+  transform: skewX(-20deg);
+  animation: resumeShimmer 2.8s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes resumeShimmer {
+  0%   { left: -110%; }
+  60%  { left: 130%; }
+  100% { left: 130%; }
+}
+
+/* Hover glow fill */
+#download-resume-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 54px;
+  background: linear-gradient(135deg, rgba(168,85,247,0.25), rgba(34,211,238,0.2));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 0;
+}
+
+#download-resume-btn:hover::after {
+  opacity: 1;
+}
+
+#download-resume-btn:hover {
+  transform: translateY(-4px) scale(1.04);
+  color: #ffffff;
+  letter-spacing: 0.12em;
+}
+
+#download-resume-btn:active {
+  transform: translateY(-1px) scale(0.98);
+  transition-duration: 0.1s;
+}
+
+/* Text label keeps above pseudo-elements */
+#download-resume-btn span.resume-label {
+  position: relative;
+  z-index: 3;
+}
+
+/* Animated download icon */
+#download-resume-btn svg {
+  position: relative;
+  z-index: 3;
+  animation: resumeIconBounce 1.6s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.8));
+  flex-shrink: 0;
+}
+
+@keyframes resumeIconBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  40%       { transform: translateY(4px) scale(1.1); }
+  70%       { transform: translateY(-2px) scale(0.95); }
+}
+
+/* Particle sparkles around the wrapper */
+.resume-btn-wrapper::before,
+.resume-btn-wrapper::after {
+  content: '✦';
+  position: absolute;
+  font-size: 10px;
+  color: rgba(167, 139, 250, 0.8);
+  pointer-events: none;
+  z-index: 10;
+  animation: sparkleDrift 3s ease-in-out infinite;
+}
+
+.resume-btn-wrapper::before {
+  top: -8px;
+  left: 20%;
+  animation-delay: 0s;
+  animation-duration: 2.5s;
+  color: rgba(34, 211, 238, 0.9);
+}
+
+.resume-btn-wrapper::after {
+  bottom: -8px;
+  right: 25%;
+  animation-delay: 1.2s;
+  animation-duration: 3s;
+  color: rgba(236, 72, 153, 0.9);
+}
+
+@keyframes sparkleDrift {
+  0%   { opacity: 0; transform: translateY(0)   scale(0.6) rotate(0deg); }
+  30%  { opacity: 1; transform: translateY(-6px) scale(1.2) rotate(20deg); }
+  60%  { opacity: 0.6; transform: translateY(-3px) scale(0.9) rotate(-10deg); }
+  100% { opacity: 0; transform: translateY(0)   scale(0.6) rotate(0deg); }
+}
+
+/* Wrapper hover lifts the glow further */
+.resume-btn-wrapper:hover {
+  box-shadow:
+    0 0 28px rgba(168, 85, 247, 0.8),
+    0 0 60px rgba(34, 211, 238, 0.45),
+    0 0 120px rgba(236, 72, 153, 0.2);
+  animation-duration: 2s;
+}
